@@ -1,0 +1,31 @@
+<h4>List</h4>
+<ul class="list-group">
+  <li
+    *ngFor="
+      let character of characterList;
+      let i = index;
+      let isEven = even;
+      let isOdd = odd
+    "
+    class="list-group-item d-flex justify-content-between align-items-center"
+    [ngClass]="{
+      'list-group-item-secondary': isEven,
+      'list-group-item-default': isOdd
+    }"
+  >
+    <div>
+      <span>{{ i + 1 }}. </span>
+      <span>{{ character.name }} - </span>
+      <strong>Power: </strong>
+      <span>{{ character.power }}</span>
+    </div>
+    <button class="btn btn-danger" (click)="emitDeleteCharacter(character.id)">X</button>
+  </li>
+</ul>
+<!-- Opciones del *ngFor
+  let i = index; Obtiene la posicion o index del elemento en el array
+  let isFirst = first; Booleano para saber si es el primer item
+  let isLast = last; Booleano para saber si es el último item
+  let isEven = even; Booleano para saber si es par
+  let isOdd = odd; Booleano para saber si es impar
+-->
